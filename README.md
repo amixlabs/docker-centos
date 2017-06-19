@@ -6,7 +6,13 @@ See the Hub page for the full readme on how to use the Docker image and for info
 Common build usage:
 
 ```bash
-docker build -t amixsi/centos:latest -t amixsi/centos:7 .
+docker build \
+  --build-arg "http_proxy=$http_proxy" \
+  --build-arg "https_proxy=$https_proxy" \
+  --build-arg "no_proxy=$no_proxy" \
+  -t amixsi/centos:latest \
+  -t amixsi/centos:7 \
+  .
 ```
 
 Publish
