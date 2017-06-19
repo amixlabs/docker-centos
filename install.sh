@@ -15,6 +15,14 @@ install_epel() {
 	yum install -y epel-release
 }
 
+install_tools() {
+	yum install -y openssh-clients rsync
+}
+
+install_mariadb() {
+	yum install -y mariadb
+}
+
 install_apache() {
 
 	local names=(
@@ -67,6 +75,8 @@ clean() {
 main() {
 	setup &&
 	disable_selinux &&
+	install_tools &&
+	install_mariadb &&
 	install_epel &&
 	install_apache &&
 	install_php &&
