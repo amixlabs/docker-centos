@@ -67,6 +67,10 @@ install_nodejs() {
     # npm version
 }
 
+install_git() {
+	yum install -y git
+}
+
 clean() {
 	yum clean all
 	rm -rf /tmp/*
@@ -82,6 +86,7 @@ main() {
 	install_php &&
 	install_composer &&
 	install_nodejs &&
+	install_git &&
 	clean
 }
 
