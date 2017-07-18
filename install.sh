@@ -63,7 +63,7 @@ install_php_pdo_oci() (
 	mkdir php
 	cd php
 	rpm2cpio ../php-*.src.rpm | cpio -idmv --no-absolute-filenames
-	tar xjvf php-*.tar.bz2
+	tar xjf php-*.tar.bz2
 	cd php-*/ext/pdo_oci/
 	phpize
 	curl -LO 'https://www.dropbox.com/s/opng2o5jrv9q1fs/oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm'
