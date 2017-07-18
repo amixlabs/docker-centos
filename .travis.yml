@@ -11,13 +11,9 @@ script:
 - docker build -t amixsi/centos:latest .
 
 after_success:
-- if [ "$TRAVIS_TAG" ]; then
-    docker tag amixsi/centos:latest amixsi/centos:"$TRAVIS_TAG"
-  fi
-- if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push amixsi/centos;
-  fi
+- docker tag amixsi/centos:latest amixsi/centos:"$TRAVIS_TAG";
+  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker push amixsi/centos;
 
 branches:
   only:
