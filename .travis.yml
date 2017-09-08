@@ -1,20 +1,16 @@
-sudo: required
+language: bash
+services: docker
 
-language: php
-php:
-- 5.6
-
-services:
-- docker
+before_script:
+- docker build -t amixsi/centos:latest -t amixsi/centos:7.4 -t amixsi/centos:7 .
 
 script:
-- docker build -t amixsi/centos:latest .
+- docker run --rm -it amixsi/centos bash --version
+- docker run --rm -it amixsi/centos node --version
+- docker run --rm -it amixsi/centos npm --version
+- docker run --rm -it amixsi/centos httpd -v
+- docker run --rm -it amixsi/centos php -v
 
 after_success:
-- docker tag amixsi/centos:latest amixsi/centos:"$TRAVIS_TAG";
-  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  docker push amixsi/centos;
-
-branches:
-  only:
-  - /^\d+/
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker push amixsi/centos

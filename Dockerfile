@@ -5,11 +5,16 @@ MAINTAINER edison@amixsi.com.br
 ADD install.sh /usr/local/bin/
 RUN install.sh
 
-RUN curl -sS -Lo /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 && \
+ENV GOSU_VERSION 1.10
+RUN curl -sS -Lo /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64 && \
   chmod +x /usr/local/bin/gosu
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
+RUN groupadd -r user && useradd -g user user
+RUN mkdir /app && chown user:user /app
+VOLUME /app
 WORKDIR /app
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["/bin/bash"]
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["entrypoint.sh"]
+
+CMD ["bash"]
