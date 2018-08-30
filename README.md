@@ -1,6 +1,6 @@
 # About this Repo
 
-[![Build Status](https://travis-ci.org/amixsi/docker-centos.svg?branch=prime)](https://travis-ci.org/amixsi/docker-centos)
+[![Build Status](https://travis-ci.org/amixsi/docker-centos.svg?branch=5-prime)](https://travis-ci.org/amixsi/docker-centos)
 
 This is the Git repo of the official Docker image for [amixsi/centos](https://hub.docker.com/r/amixsi/centos/).
 See the Hub page for the full readme on how to use the Docker image and for information regarding contributing and issues.
@@ -12,8 +12,7 @@ docker build \
   --build-arg "http_proxy=$http_proxy" \
   --build-arg "https_proxy=$https_proxy" \
   --build-arg "no_proxy=$no_proxy" \
-  -t amixsi/centos:7-prime \
-  -t amixsi/centos:7.4-prime \
+  -t amixsi/centos:5-prime \
   .
 ```
 
@@ -21,7 +20,7 @@ Publish
 
 ```bash
 docker login
-docker push amixsi/centos
+docker push amixsi/centos:5-prime
 ```
 
 Handing permissions with docker volumes:
@@ -31,7 +30,7 @@ Handing permissions with docker volumes:
 Mapping your local user into container:
 
 ```bash
-docker run -e LOCAL_USER_ID=$(id -u $USER) -it --rm amixsi/centos:7-prime
+docker run -e LOCAL_USER_ID=$(id -u $USER) -it --rm amixsi/centos:5-prime
 ```
 
 or using `docker-compose.yml`:
@@ -40,7 +39,7 @@ or using `docker-compose.yml`:
 version: '2'
 services:
   shell:
-    image: amixsi/centos:7-prime
+    image: amixsi/centos:5-prime
     command: 'bash'
     environment:
     - LOCAL_USER_ID

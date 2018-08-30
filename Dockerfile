@@ -1,12 +1,11 @@
-FROM amixsi/centos:7
+FROM centos:5
 
 LABEL maintainer=edison@amixsi.com.br
 
 ADD install.sh /tmp/
-RUN /tmp/install.sh
+RUN /tmp/install.sh && mkdir /app
 
 WORKDIR /app
-
-ENTRYPOINT ["entrypoint.sh"]
+VOLUME /app
 
 CMD ["bash"]
