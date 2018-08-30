@@ -2,14 +2,15 @@ language: bash
 services: docker
 
 before_script:
-- docker build -t amixsi/centos:latest -t amixsi/centos:7.4 -t amixsi/centos:7 .
+- docker build -t amixsi/centos:7.4-prime -t amixsi/centos:7-prime .
 
 script:
-- docker run --rm -it amixsi/centos bash --version
-- docker run --rm -it amixsi/centos node --version
-- docker run --rm -it amixsi/centos npm --version
-- docker run --rm -it amixsi/centos httpd -v
-- docker run --rm -it amixsi/centos php -v
+- docker run --rm -it amixsi/centos:7-prime bash --version
+- docker run --rm -it amixsi/centos:7-prime node --version
+- docker run --rm -it amixsi/centos:7-prime npm --version
+- docker run --rm -it amixsi/centos:7-prime httpd -v
+- docker run --rm -it amixsi/centos:7-prime php -v
+- docker run --rm -it amixsi/centos:7-prime make -v
 
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
