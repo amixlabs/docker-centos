@@ -112,7 +112,9 @@ install_nodejs() {
 }
 
 install_git() {
-	yum install -y git
+	yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+	yum -y install git2u-all
+	yum -y install git-lfs
 }
 
 clean() {

@@ -13,7 +13,7 @@ docker build \
   --build-arg "https_proxy=$https_proxy" \
   --build-arg "no_proxy=$no_proxy" \
   -t amixsi/centos:latest \
-  -t amixsi/centos:7.5 \
+  -t amixsi/centos:7.6 \
   .
 ```
 
