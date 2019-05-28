@@ -1,8 +1,10 @@
+if: tag IS present
+
 language: bash
 services: docker
 
 before_script:
-- docker build -t amixsi/centos:latest -t amixsi/centos:7.5 -t amixsi/centos:7 .
+- docker build -t amixsi/centos:latest -t amixsi/centos:$TRAVIS_TAG -t amixsi/centos:7 .
 
 script:
 - docker run --rm -it amixsi/centos bash --version
