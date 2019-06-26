@@ -109,6 +109,8 @@ install_nodejs() {
     npm upgrade -g npm
     # check version npm and node
     # npm version
+	curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+	yum install -y yarn
 }
 
 install_git() {
