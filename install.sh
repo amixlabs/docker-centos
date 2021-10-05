@@ -104,7 +104,7 @@ install_composer() {
 
 install_nodejs() {
     # Repositório Oficial NodeJS
-    curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
+    curl --silent --location https://rpm.nodesource.com/setup_14.x | bash -
     yum install -y nodejs
     npm upgrade -g npm
     # check version npm and node
